@@ -1,0 +1,27 @@
+{
+  "generator-react-firebase": {
+    "promptValues": {
+      "githubUser": "hacksie",
+      "includeRedux": true,
+      "includeFirestore": true,
+      "otherFeatures": [
+        "Continuous Integration config",
+        "Firebase Cloud Messaging",
+        "Firebase Functions (with ESNext support)",
+        "Tests for Firebase Functions (Mocha/Chai or Jest)",
+        "Firebase Analytics",
+        "Error Tracking (Sentry.io)",
+        "Client Side Error Reporting (Stackdriver)"
+      ],
+      "functionsTestTool": "jest",
+      "typescriptCloudFunctions": true,
+      "firebaseKey": "AIzaSyCG5l2zNvJcONYQwSiRvE-RaDnJ918v9cw",
+      "firebaseProjectId": "bullt-d79a7",
+      "messagingSenderId": "129783939716",
+      "appId": "1:129783939716:web:7f1c83c4be74b2420ef8d1",
+      "measurementId": "G-D9DBPRJSSJ",
+      "firebasePublicVapidKey": "BAlNpzt-xTSaBhMY0DCHmI2xbu68ujC80_89iFrpNjDX49TR1gIEumyMQ1_m_BHra25998K0Fe3oYmmTjbVmqYc",
+      "ciProvider": "githubActions"
+    }
+  }
+}
