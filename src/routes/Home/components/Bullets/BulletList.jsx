@@ -12,7 +12,7 @@ import './Bullets.css'
 function BulletList() {
   const { rootId } = useParams()
   const fs = useFirestore();
-  useFirestoreConnect([{ collection: BULLETS_COLLECTION, where: [['tree', 'array-contains', rootId ? rootId.toString() : '']] }])
+  useFirestoreConnect([{ collection: BULLETS_COLLECTION, where: [['tree', 'array-contains', rootId ? rootId.toString() : '']], orderBy: "id" }])
   const [selected, setSelected] = useState(null)
 
   const selectItem = (e) => {
@@ -56,7 +56,6 @@ function BulletList() {
       return;
 
     const item = entries.find(i => i[0] === id)
-    //const content = item[1].content;
 
     const children = bulletHasChildren(item[1].id);
     console.log(id);
@@ -67,30 +66,50 @@ function BulletList() {
     const left = content.slice(0, start);
     const right = content.slice(end, content.length);
 
+    const newTree = item[1].tree;
+    newTree[newTree.length - 1] = nextId;
 
-    fs.collection(BULLETS_COLLECTION).add({ content: right, tree: item[1].tree, id: nextId })
+    fs.collection(BULLETS_COLLECTION).add({ content: right, tree: newTree, id: nextId })
     fs.collection(BULLETS_COLLECTION).doc(id).update({ content: left })
   }
 
-  const keyPress = (e) => {
+  const remove = (id) => {
+    fs.collection(BULLETS_COLLECTION).doc(id).delete();
+  }
+
+  const keyhandler = (e) => {
+
+    const id = getId(e.target);
+
+    console.log(e.key);
     switch (e.key) {
       case 'Enter':
         var range = window.getSelection().getRangeAt(0);
 
         if (range.startContainer.parentNode === e.target && range.endContainer.parentNode === e.target) {
-          const id = getId(e.target);
           split(id, e.target.innerText, range.startOffset, range.endOffset);
         }
         else {
           console.log('target doesn\'t match selection range');
           console.log(e.target);
-          console.log(range.startContainer);
+          console.log(range.startContainer.id);
         }
         e.preventDefault();
+        return;
+
+      case 'Backspace':
+        var test = /^\s$/;
+
+        if (test.test(e.target.innerText)) {
+          console.log('remove');
+          remove(id);
+        }
         break;
       default:
         break;
     }
+
+
   }
 
   const updateContent = (e) => {
@@ -197,7 +216,7 @@ function BulletList() {
           }
         })()}
         <span className={`indicator ${calcIndicator(item[1].content)}`} onClick={handleIndicatorClick}></span>
-        <ContentEditable className="itemDesc" html={item[1].content} onKeyPress={keyPress} onBlur={updateContent} suppressContentEditableWarning={true} />
+        <ContentEditable className="itemDesc" html={item[1].content} onKeyDown={keyhandler} onBlur={updateContent} suppressContentEditableWarning={true} />
         {link}
 
       </div>)

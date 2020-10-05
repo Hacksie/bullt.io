@@ -22,6 +22,7 @@ export default function createRoutes() {
             <Route key={`Route-${settings.path}`} {...settings} />
           ))
         }
+        {/* eslint-disable-next-line */}
         <Route path={Home.path} component={() => <Home.component />} />
         <Route component={NotFoundRoute.component} />
       </Switch>
