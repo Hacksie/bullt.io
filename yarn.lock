@@ -11594,10 +11594,10 @@ react-google-button@^0.7.0:
   dependencies:
     prop-types "^15.7.2"
 
-react-hook-form@^6.4.0:
-  version "6.8.1"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.8.1.tgz#eb2f78ddd5ae468082259f772d072c820a6fda46"
-  integrity sha512-ORHf4Ee2AuPPotJjGjqOjD5GrLVkWV/d+yeUimXndx2pVYj/3qzqF9RIyTszIAWfuLNJ4SZt4Oi29UTnT2kx5A==
+react-hook-form@^6.9.0:
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.9.0.tgz#e3fb510970cdf1fbab4e1095cc7e6e2a97935643"
+  integrity sha512-QLRUYI+vZfoFu4mF2CaKeq5tHgLvTe+H2ks3iVKaG07D9nnbV/pemWkg93ODb0l4kFsRb28Ti3s/1K1DHi8Z0g==
 
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.13.1"
